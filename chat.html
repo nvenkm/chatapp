@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+
+      .chat-container {
+        display: flex;
+        height: 100vh;
+      }
+
+      .user-section {
+        flex: 1;
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px;
+        max-width: 300px;
+        overflow-y: auto;
+      }
+
+      .user-section h2 {
+        margin-top: 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #fff;
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .user:hover {
+        background-color: #0056b3;
+      }
+
+      .user img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .message-section {
+        flex: 2;
+        height: 90vh;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+      .message {
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
+      .message-sender {
+        color: #007bff;
+      }
+
+      .message-content {
+        margin-top: 5px;
+      }
+
+      #message-form {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      #message-input {
+        width: calc(100% - 190px);
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .send-button {
+        width: 70px;
+        padding: 8px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .send-button:hover {
+        background-color: #0056b3;
+      }
+
+      /* new */
+      /* .blue-button {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        height: 70%;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .friend-link {
+        display: block;
+        color: black;
+        margin-bottom: 10px;
+        font-weight: bold;
+        cursor: pointer;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="user-section">
+        <h2>Users</h2>
+        <!-- <button class="blue-button" onclick="openChatRoomModal()">
+          Chat Privately
+        </button>
+
+        <div id="chatRoomModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeChatRoomModal()">&times;</span>
+            <h2 style="color: black">Friends in the room</h2>
+            <p>List of Friends:</p>
+            <div class="friends-private-chat">
+              <a class="friend-link" onclick="openChatModal('Friend 1')"
+                >Friend 1</a
+              >
+            </div> -->
+        <!-- Add more friends here as needed -->
+        <!-- </div>
+        </div> -->
+        <div class="user-list">
+          <!-- Add more user elements as needed -->
+        </div>
+      </div>
+      <div class="message-section">
+        <!-- Add more message elements as needed -->
+      </div>
+    </div>
+    <form id="message-form">
+      <p class="user-typing"></p>
+      <select name="" class="private-chat-list">
+        <option value="">Everyone</option>
+      </select>
+      <input
+        type="text"
+        id="message-input"
+        placeholder="Type your message here..."
+      />
+      <button class="send-button" type="submit">Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+  </body>
+</html>

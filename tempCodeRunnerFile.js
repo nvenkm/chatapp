@@ -1,0 +1,1 @@
+  socket.on("chat-message", (message, privateChat) => {
