@@ -89,13 +89,13 @@ function sendTheMessage(user) {
     newMessage.classList.add("sent-message");
     newMessage.innerHTML = `<span class="message-sender">${user.username}</span>
   <div class="message-content">${user.text}</div>`;
-    document.querySelector(".sent-messages").appendChild(newMessage);
+    document.querySelector(".message-section").appendChild(newMessage);
   } else {
     const newMessage = document.createElement("div");
     newMessage.classList.add("message");
     newMessage.innerHTML = `<span class="message-sender">${user.username}</span>
   <div class="message-content">${user.text}</div>`;
-    document.querySelector(".recieved-messages").appendChild(newMessage);
+    document.querySelector(".message-section").appendChild(newMessage);
   }
 }
 
