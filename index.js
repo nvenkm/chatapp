@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 //client connected
 io.on("connection", (socket) => {
   socket.on("join-room", ({ username, room }) => {
-    if (username.indexOf(" ")) {
+    if (username.includes("+")) {
       socket.emit("empty-username");
     } else {
       if (getUserByName(username)) {
