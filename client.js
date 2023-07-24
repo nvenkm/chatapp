@@ -17,6 +17,11 @@ const room = websiteURL.slice(websiteURL.indexOf("room=") + 5);
 //Join room
 socket.emit("join-room", { username, room });
 
+socket.on("user-exists", () => {
+  alert("User Already Exists");
+  window.location.href = "http://localhost:3000/";
+});
+
 //get  room and users
 socket.on("room-users", (roomusers) => {
   outputUsers(roomusers);
