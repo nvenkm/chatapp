@@ -83,11 +83,20 @@ socket.on("message", (user) => {
 
 //send the message
 function sendTheMessage(user) {
-  const newMessage = document.createElement("div");
-  newMessage.classList.add("message");
-  newMessage.innerHTML = `<span class="message-sender">${user.username}</span>
+  if (user.username === username) {
+    const newMessage = document.createElement("div");
+    newMessage.classList.add("message");
+    newMessage.classList.add("sent-message");
+    newMessage.innerHTML = `<span class="message-sender">${user.username}</span>
   <div class="message-content">${user.text}</div>`;
-  document.querySelector(".message-section").appendChild(newMessage);
+    document.querySelector(".sent-messages").appendChild(newMessage);
+  } else {
+    const newMessage = document.createElement("div");
+    newMessage.classList.add("message");
+    newMessage.innerHTML = `<span class="message-sender">${user.username}</span>
+  <div class="message-content">${user.text}</div>`;
+    document.querySelector(".recieved-messages").appendChild(newMessage);
+  }
 }
 
 msg.addEventListener("keydown", function () {

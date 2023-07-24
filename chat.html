@@ -90,6 +90,10 @@
         border-radius: 4px;
       }
 
+      .recieved-messages .message {
+        max-width: 50%;
+      }
+
       .send-button {
         width: 70px;
         padding: 8px;
@@ -102,6 +106,56 @@
 
       .send-button:hover {
         background-color: #0056b3;
+      }
+      /* Add this CSS after the existing styles */
+
+      /* Position sent messages on the right */
+      .sent-messages .message {
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
+      .sent-message {
+        max-width: 50%;
+      }
+
+      .sent-messages .message-sender {
+        color: #007bff;
+      }
+
+      .sent-messages .message-content {
+        margin-top: 5px;
+      }
+
+      /* Float the sent messages to the right */
+      .sent-messages .message {
+        float: right;
+      }
+
+      /* Clear the float to ensure proper layout */
+      .sent-messages::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Corrected CSS to display new messages vertically */
+      .message {
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        clear: both; /* Add this to prevent horizontal display of messages */
+      }
+
+      .message-sender {
+        color: #007bff;
+      }
+
+      .message-content {
+        margin-top: 5px;
       }
 
       /* new */
@@ -177,7 +231,15 @@
         </div>
       </div>
       <div class="message-section">
-        <!-- Add more message elements as needed -->
+        <!--recieved-messages -->
+        <div class="recieved-messages">
+          <!-- sample message -->
+        </div>
+
+        <!-- sent messages -->
+        <div class="sent-messages">
+          <!-- sample message -->
+        </div>
       </div>
     </div>
     <form id="message-form">
