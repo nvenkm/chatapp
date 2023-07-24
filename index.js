@@ -26,29 +26,33 @@ app.get("/", (req, res) => {
 //client connected
 io.on("connection", (socket) => {
   socket.on("join-room", ({ username, room }) => {
-    if (getUserByName(username)) {
-      socket.emit("user-exists");
+    if (username.indexOf(" ")) {
+      socket.emit("empty-username");
     } else {
-      const user = userJoin(socket.id, username, room);
-      socket.join(user.room);
+      if (getUserByName(username)) {
+        socket.emit("user-exists");
+      } else {
+        const user = userJoin(socket.id, username, room);
+        socket.join(user.room);
 
-      //welcome the user
-      socket.emit("message", formatMessage("ChatApp", "Welcome !"));
+        //welcome the user
+        socket.emit("message", formatMessage("ChatApp", "Welcome !"));
 
-      //when a new user connects
-      socket.broadcast
-        .to(user.room)
-        .emit(
-          "message",
-          formatMessage("ChatApp", `${user.username} has joined the chat`)
-        );
+        //when a new user connects
+        socket.broadcast
+          .to(user.room)
+          .emit(
+            "message",
+            formatMessage("ChatApp", `${user.username} has joined the chat`)
+          );
 
-      //update the user list
-      io.to(user.room).emit("room-users", getRoomUsers(user.room));
-      // io.to(user.room).emit("room-users", {
-      //   room: user.room,
-      //   user: getRoomUsers(user.room),
-      // });
+        //update the user list
+        io.to(user.room).emit("room-users", getRoomUsers(user.room));
+        // io.to(user.room).emit("room-users", {
+        //   room: user.room,
+        //   user: getRoomUsers(user.room),
+        // });
+      }
     }
   });
 

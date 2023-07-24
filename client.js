@@ -17,6 +17,11 @@ const room = websiteURL.slice(websiteURL.indexOf("room=") + 5);
 //Join room
 socket.emit("join-room", { username, room });
 
+socket.on("empty-username", () => {
+  alert("Username cannot be empty");
+  window.location.href = "http://localhost:3000/";
+});
+
 socket.on("user-exists", () => {
   alert("User Already Exists");
   window.location.href = "http://localhost:3000/";
@@ -67,7 +72,7 @@ messageForm.addEventListener("submit", (e) => {
     text: message,
   };
 
-  if (msg.value != "") {
+  if (msg.value.trim() != "") {
     sendTheMessage(ownMessage);
     //send message to the server
     socket.emit("chat-message", { message, privateChat });

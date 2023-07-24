@@ -84,6 +84,11 @@
         <button type="submit" class="join-button">Join</button>
       </form>
     </div>
-    <script src="client.js"></script>
+    <script>
+      const userInout = document.getElementById("username");
+      if (userInput.value.trim() === "") {
+        alert("Empty spaces not allowed!");
+      }
+    </script>
   </body>
 </html>
